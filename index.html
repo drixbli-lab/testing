@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pregunta importante 😭</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .tarjeta {
+      width: 90%;
+      max-width: 500px;
+      background: white;
+      padding: 40px 25px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .emoji {
+      font-size: 65px;
+    }
+
+    h1 {
+      color: #ff4f81;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 21px;
+      color: #555;
+      margin-bottom: 35px;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      height: 60px;
+    }
+
+    button {
+      border: none;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #si {
+      background: #ff4f81;
+      color: white;
+    }
+
+    #si:hover {
+      transform: scale(1.1);
+      background: #ff245f;
+    }
+
+    #no {
+      background: #ddd;
+      color: #333;
+      position: absolute;
+      left: 55%;
+    }
+
+    #respuesta {
+      display: none;
+      margin-top: 25px;
+      color: #ff4f81;
+      font-size: 23px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="tarjeta">
+
+    <div class="emoji">👀</div>
+
+    <h1>Pregunta MUY importante...</h1>
+
+    <p>
+      Mamá... ¿dejarás de hablar con tu amiguín? 😭
+    </p>
+
+    <div class="botones">
+      <button id="si" onclick="aceptar()">
+        Sí ❤️
+      </button>
+
+      <button id="no">
+        No 😈
+      </button>
+    </div>
+
+    <div id="respuesta">
+      ¡SABÍA QUE DIRÍAS QUE SÍ! 😂❤️<br>
+      Ahora deja de hablar con tu amiguín JAJAJA
+    </div>
+
+  </div>
+
+  <script>
+    const botonNo = document.getElementById("no");
+
+    function escapar() {
+      const ancho = window.innerWidth - botonNo.offsetWidth - 20;
+      const alto = window.innerHeight - botonNo.offsetHeight - 20;
+
+      const nuevaX = Math.random() * ancho;
+      const nuevaY = Math.random() * alto;
+
+      botonNo.style.position = "fixed";
+      botonNo.style.left = nuevaX + "px";
+      botonNo.style.top = nuevaY + "px";
+    }
+
+    // PC: huye cuando acercan el mouse
+    botonNo.addEventListener("mouseenter", escapar);
+
+    // Celular: huye cuando intentan tocarlo
+    botonNo.addEventListener("touchstart", function(event) {
+      event.preventDefault();
+      escapar();
+    });
+
+    // Por si consiguen hacer clic de alguna manera 😈
+    botonNo.addEventListener("click", function(event) {
+      event.preventDefault();
+      escapar();
+    });
+
+    function aceptar() {
+      document.getElementById("respuesta").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
